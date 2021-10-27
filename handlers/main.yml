@@ -1,0 +1,18 @@
+---
+
+- name: restarting rundeck
+  systemd:
+    name: rundeckd
+    state: restarted
+    enabled: yes
+  listen: restart rundeckd
+
+- name: check if rundeck is running
+  uri: 
+    url: http://{{ rundeck_addr }}:{{ rundeck_port }}
+    validate_certs: no
+  register: rundeck_running
+  until: rundeck_running.status == 200
+  retries: 6
+  delay: 10
+  listen: restart rundeckd

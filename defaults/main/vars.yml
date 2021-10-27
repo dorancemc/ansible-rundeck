@@ -1,0 +1,8 @@
+---
+
+rundeck_packages:
+  - rundeck
+  - rundeck-cli
+
+rundeck_addr: localhost
+rundeck_port: 4440

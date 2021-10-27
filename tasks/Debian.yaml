@@ -1,0 +1,35 @@
+---
+
+- name: install base packages
+  apt:
+    name: "{{ rundeck_base_packages }}"
+    state: present
+
+# https://docs.rundeck.com/docs/learning/howto/migrate-to-rundeck-packages-repo.html
+- name: add apt key
+  ansible.builtin.apt_key:
+    # url: https://packagecloud.io/pagerduty/rundeck/gpgkey
+    url: https://packages.rundeck.com/pagerduty/rundeck/gpgkey
+    state: present
+
+- name: creating apt config file rundeck repo
+  copy:
+    content:  |
+              deb https://packages.rundeck.com/pagerduty/rundeck/any/ any main
+              deb-src https://packages.rundeck.com/pagerduty/rundeck/any/ any main
+    dest: /etc/apt/sources.list.d/rundeck.list
+
+# - name: creating apt config file rundeck repo
+#   get_url:
+#     url: https://packagecloud.io/install/repositories/pagerduty/rundeck/config_file.list?os={{ ansible_distribution|lower }}&dist={{ ansible_distribution_release }}&source=script
+#     dest: /etc/apt/sources.list.d/pagerduty_rundeck.list
+#     mode: '0644'
+
+- name: apt update cache
+  apt:
+    update_cache: yes
+
+- name: install packages
+  apt:
+    name: "{{ rundeck_packages }}"
+    state: present

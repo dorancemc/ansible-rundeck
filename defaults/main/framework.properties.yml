@@ -1,0 +1,20 @@
+---
+
+framework_properties: 
+  # Rundeck server connection information
+  framework.server.name: "{{ rundeck_addr }}"
+  framework.server.hostname: "{{ rundeck_addr }}"
+  framework.server.port: "{{ rundeck_port }}"
+  framework.server.url: "http://{{ rundeck_addr }}:{{ rundeck_port }}"
+  # Installation locations
+  rdeck.base: /var/lib/rundeck
+  framework.projects.dir: /var/lib/rundeck/projects
+  framework.etc.dir: /etc/rundeck
+  framework.var.dir: /var/lib/rundeck/var
+  framework.tmp.dir: /var/lib/rundeck/var/tmp
+  framework.logs.dir: /var/lib/rundeck/logs
+  framework.libext.dir: /var/lib/rundeck/libext
+  # SSH defaults for node executor and file copier
+  framework.ssh.keypath: /var/lib/rundeck/.ssh/id_rsa
+  framework.ssh.user: rundeck
+  framework.ssh.timeout: 30

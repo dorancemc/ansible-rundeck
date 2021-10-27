@@ -1,0 +1,12 @@
+galaxy_info:
+  author: Dorance Martinez
+  description: role to deploy rundeck on localhost
+  company: dmc
+  license: Apache-2.0
+  min_ansible_version: 2.9
+  platforms:
+  - name: Ubuntu
+    versions:
+    - focal
+  galaxy_tags: ['rundeck']
+dependencies: []
