@@ -30,3 +30,13 @@
   notify: restart rundeckd
   when: rundeck_active_directory_enable
   tags: rundeck_config
+
+- name: configure admin.aclpolicy
+  template:
+    src: admin.aclpolicy.j2
+    dest: /etc/rundeck/admin.aclpolicy
+    owner: rundeck
+    group: rundeck
+    backup: yes
+  notify: restart rundeckd
+  tags: rundeck_config

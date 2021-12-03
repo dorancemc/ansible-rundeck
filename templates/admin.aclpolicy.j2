@@ -1,0 +1,4 @@
+{% for value in rundeck_admin_aclpolicies %}
+---
+{{ rundeck_admin_aclpolicies[value]|to_yaml }}
+{% endfor %}

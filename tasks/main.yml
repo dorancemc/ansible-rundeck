@@ -13,6 +13,7 @@
 
 - name: rundeck config
   include_tasks: rundeck_config.yml
+  tags: rundeck_config
 
 - name: nginx config
   include_tasks: nginx_config.yml
