@@ -5,7 +5,7 @@ framework_properties:
   framework.server.name: "{{ rundeck_addr }}"
   framework.server.hostname: "{{ rundeck_addr }}"
   framework.server.port: "{{ rundeck_port }}"
-  framework.server.url: "http://{{ rundeck_addr }}:{{ rundeck_port }}"
+  framework.server.url: "{{ rundeck_url_protocol }}://{{ rundeck_url_addr }}:{{ rundeck_url_port }}"
   # Installation locations
   rdeck.base: /var/lib/rundeck
   framework.projects.dir: /var/lib/rundeck/projects

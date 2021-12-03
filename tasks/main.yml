@@ -6,20 +6,12 @@
     - '{{ ansible_facts.os_family }}.yaml'
 
 - name: set OS dependent tasks
-  include: '{{ item }}'
+  include_tasks: '{{ item }}'
   with_first_found:
     - '{{ ansible_facts.os_family }}.yaml'
 
-- name: configure framework.properties
-  template:
-    src: framework.properties.j2
-    dest: /etc/rundeck/framework.properties
-  notify: restart rundeckd
-  tags: rundeck_config
+- name: rundeck config
+  include_tasks: rundeck_config.yml
 
-- name: configure rundeck-config.properties
-  template:
-    src: rundeck-config.properties.j2
-    dest: /etc/rundeck/rundeck-config.properties
-  notify: restart rundeckd
-  tags: rundeck_config
+- name: nginx config
+  include_tasks: nginx_config.yml

@@ -9,7 +9,7 @@ rundeck_config_properties:
   #rss.enabled if set to true enables RSS feeds that are public (non-authenticated)
   rss.enabled: false
   # change hostname here
-  grails.serverURL: "http://{{ rundeck_addr }}:{{ rundeck_port }}"
+  grails.serverURL: "{{ rundeck_url_protocol }}://{{ rundeck_url_addr }}:{{ rundeck_url_port }}"
   dataSource.dbCreate:  none
   dataSource.url: jdbc:h2:file:/var/lib/rundeck/data/rundeckdb;DB_CLOSE_ON_EXIT=FALSE
   grails.plugin.databasemigration.updateOnStart: true

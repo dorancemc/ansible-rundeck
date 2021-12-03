@@ -1,0 +1,15 @@
+---
+
+- name: configure framework.properties
+  template:
+    src: framework.properties.j2
+    dest: /etc/rundeck/framework.properties
+  notify: restart rundeckd
+  tags: rundeck_config
+
+- name: configure rundeck-config.properties
+  template:
+    src: rundeck-config.properties.j2
+    dest: /etc/rundeck/rundeck-config.properties
+  notify: restart rundeckd
+  tags: rundeck_config
