@@ -1,6 +1,7 @@
 --- 
 
 rundeck_active_directory_enable: false
+rundeck_active_directory_ldaps: false
 
 rundeck_profile_ad:
   JAAS_LOGIN: true
@@ -13,7 +14,7 @@ rundeck_active_directory:
   contextFactory: "com.sun.jndi.ldap.LdapCtxFactory"
   providerUrl: "ldap://localhost:389"
   bindDn: "cn: Manager,dc: rundeck,dc: com"
-  bindPassword: "changeme"
+  bindPassword: "{{ vault_rundeck_adpassword }}"
   authenticationMethod: "simple"
   forceBindingLogin: "true"
   userBaseDn: "ou: users,dc: rundeck,dc: com"

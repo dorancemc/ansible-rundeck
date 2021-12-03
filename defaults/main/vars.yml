@@ -14,6 +14,13 @@ rundeck_url_port: 443
 nginx_packages:
   - nginx
 
+rundeck_store:
+  keystore: /etc/rundeck/ssl/keystore
+  keystore.password: "{{ vault_rundeck_store_password }}"
+  key.password: "{{ vault_rundeck_store_password }}"
+  truststore: /etc/rundeck/ssl/truststore
+  truststore.password: "{{ vault_rundeck_store_password }}"
+
 # nginx_rundeck_ssl_dhparam:
 # nginx_rundeck_ssl_certificate:
 # nginx_rundeck_ssl_key:

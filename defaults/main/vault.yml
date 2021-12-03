@@ -1,0 +1,5 @@
+---
+
+vault_rundeck_adpassword: changeme
+vault_rundeck_store_password: adminadmin
+vault_rundeck_storage_passwd: changeme
