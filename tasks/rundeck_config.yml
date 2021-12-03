@@ -14,6 +14,13 @@
   notify: restart rundeckd
   tags: rundeck_config
 
+- name: configure ssl.properties
+  template:
+    src: ssl.properties.j2
+    dest: /etc/rundeck/ssl/ssl.properties
+  notify: restart rundeckd
+  tags: rundeck_config
+
 - name: configure variables
   template:
     src: rundeck_profile.j2
@@ -37,6 +44,6 @@
     dest: /etc/rundeck/admin.aclpolicy
     owner: rundeck
     group: rundeck
-    backup: yes
   notify: restart rundeckd
   tags: rundeck_config
+
