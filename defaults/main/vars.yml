@@ -6,3 +6,15 @@ rundeck_packages:
 
 rundeck_addr: localhost
 rundeck_port: 4440
+
+rundeck_url_protocol: https
+rundeck_url_addr: "{{ inventory_hostname }}"
+rundeck_url_port: 443
+
+nginx_packages:
+  - nginx
+
+# nginx_rundeck_ssl_dhparam:
+# nginx_rundeck_ssl_certificate:
+# nginx_rundeck_ssl_key:
+# nginx_rundeck_client_max_body_size: 100M

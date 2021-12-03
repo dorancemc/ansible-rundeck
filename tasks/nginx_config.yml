@@ -1,0 +1,42 @@
+---
+
+- name: copy default dhparam.pem
+  ansible.builtin.copy:
+    src: certs/dhparam.pem
+    dest: /etc/ssl/dhparam.pem
+    owner: root
+    group: root
+    mode: '0644'
+  when: nginx_rundeck_ssl_dhparam is not defined
+  notify: restart nginx
+  tags: nginx_config
+
+- name: copy default rundeck.local.cert
+  ansible.builtin.copy:
+    src: certs/rundeck.local.cert
+    dest: /etc/ssl/rundeck.local.cert
+    owner: root
+    group: root
+    mode: '0644'
+  when: nginx_rundeck_ssl_certificate is not defined
+  notify: restart nginx
+  tags: nginx_config
+
+- name: copy default rundeck.local.cert
+  ansible.builtin.copy:
+    src: certs/rundeck.local.key
+    dest: /etc/ssl/rundeck.local.key
+    owner: root
+    group: root
+    mode: '0644'
+  when: nginx_rundeck_ssl_key is not defined
+  notify: restart nginx
+  tags: nginx_config
+
+- name: install nginx vhost config for rundeck
+  become: true
+  template:
+    src: nginx.rundeck.j2
+    dest: /etc/nginx/conf.d/rundeck.conf
+  notify: restart nginx
+  tags: nginx_config

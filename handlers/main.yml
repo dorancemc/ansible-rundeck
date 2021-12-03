@@ -13,6 +13,12 @@
     validate_certs: no
   register: rundeck_running
   until: rundeck_running.status == 200
-  retries: 6
-  delay: 10
+  retries: 10
+  delay: 20
   listen: restart rundeckd
+
+- name: restart nginx
+  systemd:
+    name: nginx
+    state: restarted
+    enabled: yes
