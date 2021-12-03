@@ -1,0 +1,5 @@
+{% if rundeck_active_directory_enable %}
+{% for key,data in rundeck_profile_ad.items() %}
+{{ key }}={{ data|lower }}
+{% endfor %}
+{% endif %}

@@ -1,0 +1,7 @@
+activedirectory {
+    com.dtolabs.rundeck.jetty.jaas.JettyCachingLdapLoginModule required
+{% for key,data in rundeck_active_directory.items() %}
+    {{ key }}="{{ data }}"
+{% endfor %}
+    reportStatistics="true";
+};

@@ -1,0 +1,28 @@
+--- 
+
+rundeck_active_directory_enable: false
+
+rundeck_profile_ad:
+  JAAS_LOGIN: true
+  LOGIN_MODULE: activedirectory
+  JAAS_CONF: /etc/rundeck/jaas-activedirectory.conf
+
+# https://docs.rundeck.com/docs/administration/security/authentication.html#ldap
+rundeck_active_directory:
+  debug: "true"
+  contextFactory: "com.sun.jndi.ldap.LdapCtxFactory"
+  providerUrl: "ldap://localhost:389"
+  bindDn: "cn: Manager,dc: rundeck,dc: com"
+  bindPassword: "changeme"
+  authenticationMethod: "simple"
+  forceBindingLogin: "true"
+  userBaseDn: "ou: users,dc: rundeck,dc: com"
+  userRdnAttribute: "sAMAccountName"
+  userIdAttribute: "sAMAccountName"
+  userPasswordAttribute: "unicodePwd"
+  userObjectClass: "user"
+  roleBaseDn: "ou: roles,dc: rundeck,dc: com"
+  roleNameAttribute: "cn"
+  roleMemberAttribute: "member"
+  roleObjectClass: "group"
+  cacheDurationMillis: "300000"
