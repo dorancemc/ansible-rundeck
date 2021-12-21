@@ -6,3 +6,5 @@ rundeck_base_packages:
   - debian-archive-keyring
   - apt-transport-https
   - openjdk-11-jre-headless
+
+rundeck_override_variables: /etc/default/rundeckd

@@ -4,6 +4,7 @@
   include_vars: '{{ item }}'
   with_first_found:
     - '{{ ansible_facts.os_family }}.yaml'
+  tags: rundeck_config
 
 - name: set OS dependent tasks
   include_tasks: '{{ item }}'
@@ -12,6 +13,7 @@
 
 - name: rundeck config
   include_tasks: rundeck_config.yml
+  tags: rundeck_config
 
 - name: nginx config
   include_tasks: nginx_config.yml

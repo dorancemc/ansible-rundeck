@@ -13,3 +13,37 @@
     dest: /etc/rundeck/rundeck-config.properties
   notify: restart rundeckd
   tags: rundeck_config
+
+- name: configure ssl.properties
+  template:
+    src: ssl.properties.j2
+    dest: /etc/rundeck/ssl/ssl.properties
+  notify: restart rundeckd
+  tags: rundeck_config
+
+- name: configure variables
+  template:
+    src: rundeck_profile.j2
+    dest: "{{ rundeck_override_variables }}"
+  notify: restart rundeckd
+  tags: rundeck_config
+
+- name: configure jaas-activedirectory
+  template:
+    src: jaas-activedirectory.j2
+    dest: "{{ rundeck_profile_ad.JAAS_CONF }}"
+    owner: rundeck
+    group: rundeck
+  notify: restart rundeckd
+  when: rundeck_active_directory_enable
+  tags: rundeck_config
+
+- name: configure admin.aclpolicy
+  template:
+    src: admin.aclpolicy.j2
+    dest: /etc/rundeck/admin.aclpolicy
+    owner: rundeck
+    group: rundeck
+  notify: restart rundeckd
+  tags: rundeck_config
+
